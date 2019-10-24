@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="输入与输出头文件：iostream std::cout std::cin 输出 endl cout&amp;lt;&amp;lt;endl : 重起一行   ​        cout&amp;lt;&amp;lt;”hello”&amp;lt;&amp;lt;endl  换行符 cout&amp;lt;&amp;lt;”\n” cout&amp;lt;&amp;lt;”hello\n”  十六进制或八进制输出 cout&amp;lt;&amp;lt;hex cout&amp;lt;&amp;lt;oct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++基础笔记">
+<meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;10&#x2F;24&#x2F;C++%E5%9F%BA%E7%A1%80&#x2F;index.html">
+<meta property="og:site_name" content="Freya&#39;s blog">
+<meta property="og:description" content="输入与输出头文件：iostream std::cout std::cin 输出 endl cout&amp;lt;&amp;lt;endl : 重起一行   ​        cout&amp;lt;&amp;lt;”hello”&amp;lt;&amp;lt;endl  换行符 cout&amp;lt;&amp;lt;”\n” cout&amp;lt;&amp;lt;”hello\n”  十六进制或八进制输出 cout&amp;lt;&amp;lt;hex cout&amp;lt;&amp;lt;oct">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-24T09:02:20.760Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://freyar.github.io/2019/10/24/C++基础/"/>
+
+
+
+
+
+  <title>C++基础笔记 | Freya's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Freya's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freyar.github.io/2019/10/24/C++%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Freya Rao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Freya's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++基础笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-24T15:33:27+08:00">
+                2019-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h1><p>头文件：iostream</p>
+<p>std::cout</p>
+<p>std::cin</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><ol>
+<li><p>endl</p>
+<p>cout&lt;&lt;endl : 重起一行</p>
+</li>
+</ol>
+<p>​        cout&lt;&lt;”hello”&lt;&lt;endl</p>
+<ol start="2">
+<li><p>换行符</p>
+<p>cout&lt;&lt;”\n”</p>
+<p>cout&lt;&lt;”hello\n”</p>
+</li>
+<li><p>十六进制或八进制输出</p>
+<p>cout&lt;&lt;hex</p>
+<p>cout&lt;&lt;oct</p>
+</li>
+<li><p>cout.put()</p>
+<p>输出字符</p>
+</li>
+</ol>
+<p>注意：endl确保程序继续运行前刷新输出（即立即显示在屏幕上）；而使用”\n”不提供这样的保证，这意味着有些系统中，有时可能在您输入信息后才会出现提示</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>cin使用空白（空格、制表符和换行符）来确定字符串的结束位置，这意味着cin在获取字符数组输入时只读取一个单词。</p>
+<h3 id="面向行的输入"><a href="#面向行的输入" class="headerlink" title="面向行的输入"></a>面向行的输入</h3><h4 id="getline"><a href="#getline" class="headerlink" title="getline()"></a>getline()</h4><p>getline()读取整行，它使用通过回车键输入的换行符来确定输入结尾。</p>
+<p>getline()参数：第一个参数用来存储输入行的数组的名称。第二个参数是要读取的字符数，如果这个参数为20，则函数最多读取19个字符，余下的空间用于存储自动在结尾处添加的空字符。</p>
+<p>cin.getline(name,20)</p>
+<p>cin.getline(name1,20).getline(name2,20)</p>
+<p><strong>读取一行到string对象中：getline(cin,str);</strong></p>
+<h4 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h4><p>get()不再读取并丢弃换行符，而是将其留在输入队列中</p>
+<p>使用不带任何参数的cin.get()调用可读取下一个字符（即使是换行符）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span>.get(name1,<span class="number">15</span>);</span><br><span class="line"><span class="built_in">cin</span>.get();</span><br><span class="line"><span class="built_in">cin</span>.get(name2,<span class="number">15</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="处理数据"><a href="#处理数据" class="headerlink" title="处理数据"></a>处理数据</h1><h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><h3 id="整型short、int、long、long-long"><a href="#整型short、int、long、long-long" class="headerlink" title="整型short、int、long、long long"></a>整型short、int、long、long long</h3><ul>
+<li>short：至少为16位</li>
+<li>int：至少与short一样长</li>
+<li>long：至少为32位，且至少与int一样长</li>
+<li>long long：至少为64位，且至少与long一样长</li>
+</ul>
+<p>在老式的PC中，int的宽度为16位。而在一些新的PC中，int的宽度为32位</p>
+<h3 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h3><ul>
+<li><p>获取字符的编码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> ch = <span class="string">'M'</span>;</span><br><span class="line"><span class="keyword">int</span> i = ch;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"The ASCII code for"</span> &lt;&lt; ch &lt;&lt;<span class="string">"is"</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++ 新增类型：char16_t和char32_t</p>
+<p>char16_t：无符号16位，使用前缀u表示char16_t字符常量和字符串常量，u’C’</p>
+<p>char32_t：无符号32位，使用前缀U表示char32_t字符常量和字符串常量，U’R’</p>
+</li>
+</ul>
+<h2 id="const限定符"><a href="#const限定符" class="headerlink" title="const限定符"></a>const限定符</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#创建常量的通用格式</span><br><span class="line"><span class="keyword">const</span> type name = value;</span><br></pre></td></tr></table></figure>
+
+<p>常量被初始化后，其值就被固定了，编译器不允许再修改该常量的值</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><ul>
+<li>float：至少为32位，通常位32位，1.23f</li>
+<li>double：至少为48位，且不少于float，通常为64位，2.345324E28</li>
+<li>long double：至少和double一样多，为80，96或128位，2.2L</li>
+</ul>
+<h1 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组的初始化规则"><a href="#数组的初始化规则" class="headerlink" title="数组的初始化规则"></a>数组的初始化规则</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> cards[<span class="number">4</span>] = &#123;<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>&#125;;</span><br><span class="line"><span class="comment">//只有在定义数组时才能使用初始化，所以以下情况是非法的</span></span><br><span class="line"><span class="keyword">int</span> hand[<span class="number">4</span>];</span><br><span class="line">hand[<span class="number">4</span>] = &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>&#125;;</span><br><span class="line">hand = cards;</span><br><span class="line"><span class="comment">//初始化时，提供的值可以少于数组的元素数目。如果只对数组的一部分进行初始化，则编译器将把其他元素设置为0</span></span><br><span class="line"><span class="keyword">float</span> totals[<span class="number">5</span>] = &#123;<span class="number">5.0</span>,<span class="number">2.5</span>&#125;;</span><br><span class="line"><span class="comment">//如果初始化数组时方括号内为空。C++编译器将计算元素个数</span></span><br><span class="line"><span class="keyword">short</span> things[] = &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">//如果想获得数组大小</span></span><br><span class="line"><span class="keyword">int</span> num_elements = <span class="keyword">sizeof</span> things/<span class="keyword">sizeof</span> (<span class="keyword">short</span>);</span><br><span class="line"><span class="comment">//C++ 11使用大括号初始化作为一种通用初始化方法</span></span><br><span class="line"><span class="comment">//可省略=</span></span><br><span class="line"><span class="keyword">double</span> earning[<span class="number">4</span>] &#123;<span class="number">1.2e4</span>,<span class="number">1.6e4</span>,<span class="number">1.1e4</span>,<span class="number">1.7e4</span>&#125;;</span><br><span class="line"><span class="comment">//可不在大括号内包含任何东西，这将把所有元素都设置为零</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> counts[<span class="number">10</span>] &#123;&#125;;</span><br><span class="line"><span class="comment">//初始化列表禁止缩窄转换</span></span><br><span class="line"><span class="keyword">long</span> plifs[] = &#123;<span class="number">25</span>,<span class="number">92</span>,<span class="number">3.0</span>&#125;;<span class="comment">//非法，因为将浮点数转换为整型是缩窄转换</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="模板类vector"><a href="#模板类vector" class="headerlink" title="模板类vector"></a>模板类vector</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vi; <span class="comment">//vi初始长度为0</span></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; vd(n)<span class="comment">//创建存储n个double类型的数组</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> cat[<span class="number">4</span>] = &#123;<span class="string">'c'</span>,<span class="string">'a'</span>,<span class="string">'t'</span>,<span class="string">'\0'</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> fish[] = <span class="string">"Bubbles"</span>;</span><br><span class="line"><span class="keyword">char</span> bird[<span class="number">20</span>] = <span class="string">"hello world"</span>;</span><br><span class="line"><span class="comment">//注意字符串常量不能与字符常量互换</span></span><br><span class="line"><span class="keyword">char</span> shirt_size = <span class="string">'s'</span>; <span class="comment">//ok</span></span><br><span class="line"><span class="keyword">char</span> shirt_size = <span class="string">"s"</span>; <span class="comment">//非法</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="拼接字符串常量"><a href="#拼接字符串常量" class="headerlink" title="拼接字符串常量"></a>拼接字符串常量</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//任何两个由空白（空格、制表符、换行符）分隔的字符串常量都将自动拼接成一个</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt; <span class="string">"hello"</span> <span class="string">" world!!\n"</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="string类"><a href="#string类" class="headerlink" title="string类"></a>string类</h2><h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str1 = <span class="string">"hello world"</span>;</span><br><span class="line"><span class="built_in">string</span> str2 = &#123;<span class="string">"hello world"</span>&#125;;</span><br><span class="line"><span class="built_in">string</span> str3 &#123;<span class="string">"hello world"</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/24/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E5%92%8C%E4%BA%8B%E4%BB%B6/" rel="next" title="回调函数和事件">
+                <i class="fa fa-chevron-left"></i> 回调函数和事件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/timg.jpg"
+               alt="Freya Rao" />
+          <p class="site-author-name" itemprop="name">Freya Rao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#输入与输出"><span class="nav-number">1.</span> <span class="nav-text">输入与输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">1.1.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">1.2.</span> <span class="nav-text">输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向行的输入"><span class="nav-number">1.2.1.</span> <span class="nav-text">面向行的输入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getline"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">getline()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">get()</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理数据"><span class="nav-number">2.</span> <span class="nav-text">处理数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整型"><span class="nav-number">2.1.</span> <span class="nav-text">整型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整型short、int、long、long-long"><span class="nav-number">2.1.1.</span> <span class="nav-text">整型short、int、long、long long</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符"><span class="nav-number">2.1.2.</span> <span class="nav-text">字符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const限定符"><span class="nav-number">2.2.</span> <span class="nav-text">const限定符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数"><span class="nav-number">2.3.</span> <span class="nav-text">浮点数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复合类型"><span class="nav-number">3.</span> <span class="nav-text">复合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">3.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的初始化规则"><span class="nav-number">3.1.1.</span> <span class="nav-text">数组的初始化规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板类vector"><span class="nav-number">3.1.2.</span> <span class="nav-text">模板类vector</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">3.2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">3.2.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拼接字符串常量"><span class="nav-number">3.2.2.</span> <span class="nav-text">拼接字符串常量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string类"><span class="nav-number">3.3.</span> <span class="nav-text">string类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">初始化</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Freya Rao</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
