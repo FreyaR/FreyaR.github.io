@@ -94,14 +94,14 @@
 
 
 
-<meta name="description" content="二叉树的深度优先遍历从根节点出发，沿着左子树方向进行纵向遍历，直到找到叶子节点为止。然后回溯到前一个节点，进行右子树遍历，直到遍历完所有可达节点为止 实现引入栈，后进先出。可以先将右子树压栈，再将左子树压栈。在压栈时，必须确保该节点的左右子树都为空。如果不为空就需要先将它的右子树压栈，再将左子树压栈。等左右子树都压栈以后，再将节点压栈。">
+<meta name="description" content="762. Prime Number of Set Bits in Binary RepresentationC++ bitset类 bitset定义和初始化 123bitset&amp;lt;n&amp;gt; b; &#x2F;&#x2F;b有n位，每位都为0bitset&amp;lt;n&amp;gt; b(n); &#x2F;&#x2F;n可以为int、long、string等类型bitset&amp;lt;n&amp;gt; b(s,pos,n); &#x2F;&#x2F;取s中从pos开始的n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树的遍历">
-<meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;10&#x2F;30&#x2F;%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86&#x2F;index.html">
+<meta property="og:title" content="leetcode">
+<meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;11&#x2F;04&#x2F;leetcode&#x2F;index.html">
 <meta property="og:site_name" content="Freya&#39;s blog">
-<meta property="og:description" content="二叉树的深度优先遍历从根节点出发，沿着左子树方向进行纵向遍历，直到找到叶子节点为止。然后回溯到前一个节点，进行右子树遍历，直到遍历完所有可达节点为止 实现引入栈，后进先出。可以先将右子树压栈，再将左子树压栈。在压栈时，必须确保该节点的左右子树都为空。如果不为空就需要先将它的右子树压栈，再将左子树压栈。等左右子树都压栈以后，再将节点压栈。">
+<meta property="og:description" content="762. Prime Number of Set Bits in Binary RepresentationC++ bitset类 bitset定义和初始化 123bitset&amp;lt;n&amp;gt; b; &#x2F;&#x2F;b有n位，每位都为0bitset&amp;lt;n&amp;gt; b(n); &#x2F;&#x2F;n可以为int、long、string等类型bitset&amp;lt;n&amp;gt; b(s,pos,n); &#x2F;&#x2F;取s中从pos开始的n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-30T02:57:44.824Z">
+<meta property="og:updated_time" content="2019-11-04T09:37:22.072Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://freyar.github.io/2019/10/30/树的遍历/"/>
+  <link rel="canonical" href="https://freyar.github.io/2019/11/04/leetcode/"/>
 
 
 
 
 
-  <title>树的遍历 | Freya's blog</title>
+  <title>leetcode | Freya's blog</title>
   
 
 
@@ -260,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freyar.github.io/2019/10/30/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/">
+    <link itemprop="mainEntityOfPage" href="https://freyar.github.io/2019/11/04/leetcode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Freya Rao">
@@ -277,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">树的遍历</h1>
+          <h1 class="post-title" itemprop="name headline">leetcode</h1>
         
 
         <div class="post-meta">
@@ -289,8 +289,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-30T10:00:06+08:00">
-                2019-10-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-04T16:42:50+08:00">
+                2019-11-04
               </time>
             
 
@@ -312,8 +312,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
                   </a>
                 </span>
 
@@ -349,8 +349,15 @@
       
 
       
-        <h1 id="二叉树的深度优先遍历"><a href="#二叉树的深度优先遍历" class="headerlink" title="二叉树的深度优先遍历"></a>二叉树的深度优先遍历</h1><p><strong>从根节点出发，沿着左子树方向进行纵向遍历，直到找到叶子节点为止。然后回溯到前一个节点，进行右子树遍历，直到遍历完所有可达节点为止</strong></p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>引入栈，后进先出。可以先将右子树压栈，再将左子树压栈。在压栈时，必须确保该节点的左右子树都为空。如果不为空就需要先将它的右子树压栈，再将左子树压栈。等左右子树都压栈以后，再将节点压栈。</p>
+        <h1 id="762-Prime-Number-of-Set-Bits-in-Binary-Representation"><a href="#762-Prime-Number-of-Set-Bits-in-Binary-Representation" class="headerlink" title="762. Prime Number of Set Bits in Binary Representation"></a>762. Prime Number of Set Bits in Binary Representation</h1><h2 id="C-bitset类"><a href="#C-bitset类" class="headerlink" title="C++ bitset类"></a>C++ bitset类</h2><ol>
+<li><p>bitset定义和初始化</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bitset</span>&lt;n&gt; b; <span class="comment">//b有n位，每位都为0</span></span><br><span class="line"><span class="built_in">bitset</span>&lt;n&gt; b(n); <span class="comment">//n可以为int、long、string等类型</span></span><br><span class="line"><span class="built_in">bitset</span>&lt;n&gt; b(s,pos,n); <span class="comment">//取s中从pos开始的n位</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bitset的函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">any</span><span class="params">()</span></span>; <span class="comment">//是否存在置为1的二进制位</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">none</span><span class="params">()</span></span>; <span class="comment">//是否全部为0</span></span><br><span class="line"><span class="keyword">size_t</span> count(); <span class="comment">//二进制位为1的个数</span></span><br><span class="line"><span class="keyword">size_t</span> size(); <span class="comment">//二进制位的个数</span></span><br><span class="line"><span class="function"><span class="built_in">bitset</span>&amp; <span class="title">flip</span><span class="params">(<span class="keyword">size_t</span> pos)</span></span>; <span class="comment">//把在pos处的二进制位取反</span></span><br><span class="line"><span class="function"><span class="built_in">bitset</span>&amp; <span class="title">flip</span><span class="params">()</span></span>; <span class="comment">//所有二进制位取反</span></span><br><span class="line"><span class="function"><span class="built_in">bitset</span>&amp; <span class="title">reset</span> <span class="params">(<span class="keyword">size_t</span> pos)</span></span>; <span class="comment">//把pos处的二进制位置为0</span></span><br><span class="line"><span class="function"><span class="built_in">bitset</span>&amp; <span class="title">reset</span><span class="params">()</span></span>; <span class="comment">//把所有二进制位置为0</span></span><br><span class="line"><span class="function"><span class="built_in">bitset</span>&amp; <span class="title">set</span> <span class="params">(<span class="keyword">size_t</span> pos, <span class="keyword">bool</span> val = <span class="literal">true</span>)</span></span>; <span class="comment">//把pos处的二进制位置为val，val参数为空则置为1</span></span><br><span class="line"><span class="function"><span class="built_in">bitset</span>&amp; <span class="title">set</span><span class="params">()</span></span>; <span class="comment">//把所有二进制位置为1</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">test</span> <span class="params">(<span class="keyword">size_t</span> pos)</span></span>; <span class="comment">//测试pos处的二进制位是否位1</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 
       
     </div>
@@ -375,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/25/%E6%8C%87%E9%92%88/" rel="next" title="指针">
-                <i class="fa fa-chevron-left"></i> 指针
+              <a href="/2019/10/30/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="next" title="树的遍历">
+                <i class="fa fa-chevron-left"></i> 树的遍历
               </a>
             
           </div>
@@ -384,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/04/leetcode/" rel="prev" title="leetcode">
-                leetcode <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -512,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树的深度优先遍历"><span class="nav-number">1.</span> <span class="nav-text">二叉树的深度优先遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">1.1.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#762-Prime-Number-of-Set-Bits-in-Binary-Representation"><span class="nav-number">1.</span> <span class="nav-text">762. Prime Number of Set Bits in Binary Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-bitset类"><span class="nav-number">1.1.</span> <span class="nav-text">C++ bitset类</span></a></li></ol></li></ol></div>
             
 
           </div>
