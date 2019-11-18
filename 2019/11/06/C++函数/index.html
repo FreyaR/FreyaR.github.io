@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Freya&#39;s blog">
 <meta property="og:description" content="函数C++对于返回值的类型有一定限制，不能是数组，但可以是其他任何类型——整数、浮点数、指针，甚至可以是结构和对象 函数与数组在C++中，当且仅当用于函数头或函数原型中，int *arr和int arr[]的含义相同 传递常规变量时，函数将使用改变量拷贝。传递数组时，函数将使用原来的数组。传递数组时，并没有将数组内容传递给函数，而是将数组的位置（地址）提交给函数 为将数组类型和元素数量告诉数组处理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T02:50:27.737Z">
+<meta property="og:updated_time" content="2019-11-06T09:59:50.814Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -428,7 +428,10 @@
 <p>实参按从左到右的顺序依次被赋给响应的形参，不能跳过任何参数</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">beeps = harpo(<span class="number">2</span>);<span class="comment">//(2,4,5)</span></span><br><span class="line">beeps = harpo(<span class="number">1</span>,<span class="number">8</span>);<span class="comment">//(1,8,5)</span></span><br><span class="line">beeps = harpo(<span class="number">3</span>,,<span class="number">8</span>); <span class="comment">//非法</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2>
+<h2 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h2><p>定义一个模板</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> AnyType&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Swap</span><span class="params">(AnyType &amp;a,AnyType &amp;b)</span></span>&#123;</span><br><span class="line">	AnyType temp;</span><br><span class="line">	temp = a;</span><br><span class="line">	a = b;</span><br><span class="line">	b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -461,6 +464,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/11/Java%E5%9F%BA%E7%A1%80/" rel="prev" title="Java基础">
+                Java基础 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -537,7 +544,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -548,7 +555,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -585,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数与数组"><span class="nav-number">1.1.</span> <span class="nav-text">函数与数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用const保护数组"><span class="nav-number">1.1.1.</span> <span class="nav-text">用const保护数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const和指针"><span class="nav-number">1.1.2.</span> <span class="nav-text">const和指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数和二维数组"><span class="nav-number">1.1.3.</span> <span class="nav-text">函数和二维数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数与字符串"><span class="nav-number">1.2.</span> <span class="nav-text">函数与字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数与结构"><span class="nav-number">1.3.</span> <span class="nav-text">函数与结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数指针"><span class="nav-number">1.4.</span> <span class="nav-text">函数指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用变量"><span class="nav-number">1.5.</span> <span class="nav-text">引用变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#临时变量的生成"><span class="nav-number">1.5.1.</span> <span class="nav-text">临时变量的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回引用"><span class="nav-number">1.5.2.</span> <span class="nav-text">返回引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将引用用于类对象"><span class="nav-number">1.5.3.</span> <span class="nav-text">将引用用于类对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认参数"><span class="nav-number">1.6.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数重载"><span class="nav-number">1.7.</span> <span class="nav-text">函数重载</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数与数组"><span class="nav-number">1.1.</span> <span class="nav-text">函数与数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用const保护数组"><span class="nav-number">1.1.1.</span> <span class="nav-text">用const保护数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const和指针"><span class="nav-number">1.1.2.</span> <span class="nav-text">const和指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数和二维数组"><span class="nav-number">1.1.3.</span> <span class="nav-text">函数和二维数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数与字符串"><span class="nav-number">1.2.</span> <span class="nav-text">函数与字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数与结构"><span class="nav-number">1.3.</span> <span class="nav-text">函数与结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数指针"><span class="nav-number">1.4.</span> <span class="nav-text">函数指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用变量"><span class="nav-number">1.5.</span> <span class="nav-text">引用变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#临时变量的生成"><span class="nav-number">1.5.1.</span> <span class="nav-text">临时变量的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回引用"><span class="nav-number">1.5.2.</span> <span class="nav-text">返回引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将引用用于类对象"><span class="nav-number">1.5.3.</span> <span class="nav-text">将引用用于类对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认参数"><span class="nav-number">1.6.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数模板"><span class="nav-number">1.7.</span> <span class="nav-text">函数模板</span></a></li></ol></li></ol></div>
             
 
           </div>

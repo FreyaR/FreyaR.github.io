@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="创建、编译、运行Java程序 命令行编译Java程序： 注意：Java区分大小写 javac Welcome.java java Welcome  源代码的文件名必须与公共类的名字相同，并用.java作为扩展名  在一个源文件中，只能有一个公有类，但可以有任意数目的非公有类  每个Java应用程序都必须有一个main方法   数据类型 Java没有任何无符号类型  整型   类型 存储要求 备注">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础">
+<meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;11&#x2F;11&#x2F;Java%E5%9F%BA%E7%A1%80&#x2F;index.html">
+<meta property="og:site_name" content="Freya&#39;s blog">
+<meta property="og:description" content="创建、编译、运行Java程序 命令行编译Java程序： 注意：Java区分大小写 javac Welcome.java java Welcome  源代码的文件名必须与公共类的名字相同，并用.java作为扩展名  在一个源文件中，只能有一个公有类，但可以有任意数目的非公有类  每个Java应用程序都必须有一个main方法   数据类型 Java没有任何无符号类型  整型   类型 存储要求 备注">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-15T09:30:56.661Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://freyar.github.io/2019/11/11/Java基础/"/>
+
+
+
+
+
+  <title>Java基础 | Freya's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Freya's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freyar.github.io/2019/11/11/Java%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Freya Rao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Freya's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-11T15:02:16+08:00">
+                2019-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="创建、编译、运行Java程序"><a href="#创建、编译、运行Java程序" class="headerlink" title="创建、编译、运行Java程序"></a>创建、编译、运行Java程序</h1><ul>
+<li><p>命令行编译Java程序：</p>
+<p><strong>注意：Java区分大小写</strong></p>
+<p>javac Welcome.java</p>
+<p>java Welcome</p>
+</li>
+<li><p>源代码的文件名必须与公共类的名字相同，并用.java作为扩展名</p>
+</li>
+<li><p>在一个源文件中，只能有一个公有类，但可以有任意数目的非公有类</p>
+</li>
+<li><p>每个Java应用程序都必须有一个main方法</p>
+</li>
+</ul>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
+<li>Java没有任何无符号类型</li>
+</ul>
+<h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储要求</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>4字节</td>
+<td></td>
+</tr>
+<tr>
+<td>long</td>
+<td>8字节</td>
+<td>4000000000L</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+<td></td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1字节</td>
+<td>0b1001</td>
+</tr>
+</tbody></table>
+<h2 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h2><ul>
+<li><p>Java中默认浮点类型为double类型</p>
+</li>
+<li><p>浮点数不适用于禁止出现四舍五入的计算中，如果需要在数值计算中不含有任何舍入误差，应该使用BigDecimal类</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储要求</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4字节</td>
+<td>3.14F，没有后缀F默认为double类型</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><ul>
+<li>利用关键字final指示常量，关键词final表示这个变量只能被赋值一次，常量名使用全大写</li>
+<li>关键字static final设置一个常量，使得这个常量可以在一个类的多个方法中使用，成为类常量</li>
+<li>如果一个常量被声明为public，那么其他类的方法也可以使用这个常量</li>
+</ul>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String greeting = <span class="string">"hello"</span>;</span><br><span class="line">String s = greeting.substring(<span class="number">0</span>,<span class="number">3</span>);<span class="comment">//hel</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="检测字符串是否相等"><a href="#检测字符串是否相等" class="headerlink" title="检测字符串是否相等"></a>检测字符串是否相等</h2><ul>
+<li><p>可以用equals方法检测两个字符串是否相等，相等返回true，不等返回false</p>
+<p>s.equals(t);</p>
+</li>
+<li><p>可以用equalsIgnoreCase方法检测两个字符串是否相等，而不区分大小写</p>
+<p>“Hello”.equalsIgnoreCase(“hello”);</p>
+</li>
+<li><p>一定不能使用==运算符检测两个字符串是否相等。这个运算符只能确定两个字符串是否在同一个位置上。</p>
+</li>
+</ul>
+<h2 id="空串与Null串"><a href="#空串与Null串" class="headerlink" title="空串与Null串"></a>空串与Null串</h2><ul>
+<li><p>空串是长度为0的字符串，合法初始化。</p>
+<p>空串是一个Java对象，有自己的串长度和内容</p>
+<p>可以调用 if(str.length()==0) 或 if(str.equals(“”)) 来检测字符串是否为空</p>
+</li>
+<li><p>null表示目前没有任何对象与该变量相关联，变量没有被初始化</p>
+<p>if(str == null)</p>
+</li>
+<li><p>检查一个字符串既不是null也不为空串，首先要检查str不为null，因为如果在一个null上调用方法会出错</p>
+<p>if(str != null &amp;&amp; str.length() != 0)</p>
+</li>
+</ul>
+<h1 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h1><ul>
+<li><p>读取输入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InputTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        String name = in.nextline(); <span class="comment">//读取一行输入</span></span><br><span class="line">        <span class="keyword">int</span> word = in.next(); <span class="comment">//读取一个单词，以空白符作为分隔符</span></span><br><span class="line">        <span class="keyword">int</span> age = in.nextInt(); <span class="comment">//读取一个整型值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>格式化输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">"%tc"</span>,<span class="keyword">new</span> Date());</span><br><span class="line">System.out.printf(<span class="string">"%1$s %2$tB %2$te %2$tY"</span>, <span class="string">"Due date:"</span>, <span class="keyword">new</span> Date());</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>文件的输入与输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scanner in = <span class="keyword">new</span> Scanner(Paths.get(<span class="string">"myfile.txt"</span>)); <span class="comment">//构造一个对文件进行读取的对象</span></span><br><span class="line">PrintWriter out = <span class="keyword">new</span> PrintWriter(<span class="string">"myfile.txt"</span>); <span class="comment">//构造一个写入文件的对象</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int[] a = new int[100]; //创建一个数组，数组的长度不要求是常量。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建一个数字数组时，所有元素都初始化为0。boolean数组的元素会初始化为false。对象数组的元素则初始化为一个特殊值null</li>
+<li>array.length可以获得数组中的元素个数</li>
+<li>一旦创建了数组，就不能在改变它的大小</li>
+</ul>
+<h2 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] smallPrimes = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">13</span>&#125;;</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">int</span>[] = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">13</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h2><p>将一个数组变量拷贝给另一个数组变量，两个变量将引用同一个数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] luckyNumbers = smallPrimes</span><br></pre></td></tr></table></figure>
+
+<p>如果希望将一个数组的所有值拷贝到另一个新的数组中去，则使用Arrays类的copyOf方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] copiedLuckyNumbers = Arrays.copyOf(luckyNumbers,luckyNumbers.length)</span><br></pre></td></tr></table></figure>
+
+<h1 id="for-each循环"><a href="#for-each循环" class="headerlink" title="for each循环"></a>for each循环</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for(variable : collection) statement</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> element : a)</span><br><span class="line">    System.out.println(element);</span><br></pre></td></tr></table></figure>
+
+<p><strong>想要打印数组，还可以使用Arrays类的toString方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Arrays.toString(a));</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/06/C++%E5%87%BD%E6%95%B0/" rel="next" title="C++函数">
+                <i class="fa fa-chevron-left"></i> C++函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/14/Java%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" rel="prev" title="Java类与对象">
+                Java类与对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/timg.jpg"
+               alt="Freya Rao" />
+          <p class="site-author-name" itemprop="name">Freya Rao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建、编译、运行Java程序"><span class="nav-number">1.</span> <span class="nav-text">创建、编译、运行Java程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整型"><span class="nav-number">2.1.</span> <span class="nav-text">整型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点类型"><span class="nav-number">2.2.</span> <span class="nav-text">浮点类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常量"><span class="nav-number">3.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#子串"><span class="nav-number">4.1.</span> <span class="nav-text">子串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测字符串是否相等"><span class="nav-number">4.2.</span> <span class="nav-text">检测字符串是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空串与Null串"><span class="nav-number">4.3.</span> <span class="nav-text">空串与Null串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入与输出"><span class="nav-number">5.</span> <span class="nav-text">输入与输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">6.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建数组"><span class="nav-number">6.1.</span> <span class="nav-text">创建数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组初始化"><span class="nav-number">6.2.</span> <span class="nav-text">数组初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组拷贝"><span class="nav-number">6.3.</span> <span class="nav-text">数组拷贝</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-each循环"><span class="nav-number">7.</span> <span class="nav-text">for each循环</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Freya Rao</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
