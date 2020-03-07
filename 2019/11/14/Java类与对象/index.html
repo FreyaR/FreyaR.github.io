@@ -94,14 +94,14 @@
 
 
 
-<meta name="description" content="概念 类是构造对象的模板或蓝图 由类构造对象的过程称为创建类的实例 对象中的数据称为实例域，操纵数据的过程称为方法  用户自定义类构造器 构造器与类同名 构造器伴随着new操作符的执行被调用，而不能对一个已经存在的对象调用构造器来达到重新设置实例域的目的 在类的所有方法中不要命名与实例域同名的变量  隐式参数与显式参数 隐式参数：出现在方法名前的对象，在每一个方法中，可用关键字this表示隐式参数">
+<meta name="description" content="概念 类是构造对象的模板或蓝图 由类构造对象的过程称为创建类的实例 对象中的数据称为实例域，操纵数据的过程称为方法  用户自定义类定义类类成员：构造器、成员变量、方法  成员变量 修饰符：可以省略，也可以是public、protected、private、static、final，其中public、protected、private三个最多只能出现其中之一，可以与static、final组合起来修">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java类与对象">
 <meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;11&#x2F;14&#x2F;Java%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1&#x2F;index.html">
 <meta property="og:site_name" content="Freya&#39;s blog">
-<meta property="og:description" content="概念 类是构造对象的模板或蓝图 由类构造对象的过程称为创建类的实例 对象中的数据称为实例域，操纵数据的过程称为方法  用户自定义类构造器 构造器与类同名 构造器伴随着new操作符的执行被调用，而不能对一个已经存在的对象调用构造器来达到重新设置实例域的目的 在类的所有方法中不要命名与实例域同名的变量  隐式参数与显式参数 隐式参数：出现在方法名前的对象，在每一个方法中，可用关键字this表示隐式参数">
+<meta property="og:description" content="概念 类是构造对象的模板或蓝图 由类构造对象的过程称为创建类的实例 对象中的数据称为实例域，操纵数据的过程称为方法  用户自定义类定义类类成员：构造器、成员变量、方法  成员变量 修饰符：可以省略，也可以是public、protected、private、static、final，其中public、protected、private三个最多只能出现其中之一，可以与static、final组合起来修">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-17T08:24:00.979Z">
+<meta property="og:updated_time" content="2020-02-04T09:38:34.545Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -354,38 +354,106 @@
 <li>由类构造对象的过程称为创建类的实例</li>
 <li>对象中的数据称为实例域，操纵数据的过程称为方法</li>
 </ul>
-<h1 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h1><h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><ul>
+<h1 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h1><h2 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h2><p>类成员：构造器、成员变量、方法</p>
+<ul>
+<li><p>成员变量</p>
+<p>修饰符：可以省略，也可以是public、protected、private、static、final，其中public、protected、private三个最多只能出现其中之一，可以与static、final组合起来修饰成员变量</p>
+</li>
+<li><p>方法</p>
+<p>修饰符：可以省略，也可以是public、protected、private、static、final、abstract，其中public、protected、private三个最多只能出现其中之一，final和abstract最多只能出现其中之一，它们可以与static组合起来修饰方法</p>
+</li>
+<li><p>构造器</p>
+<p>修饰符：可以省略，也可以是public、protected、private其中之一</p>
+</li>
+</ul>
+<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><ul>
 <li>构造器与类同名</li>
+<li>构造器不能定义返回值类型，也不能使用void声明构造器有没有返回值</li>
 <li>构造器伴随着new操作符的执行被调用，而不能对一个已经存在的对象调用构造器来达到重新设置实例域的目的</li>
 <li>在类的所有方法中不要命名与实例域同名的变量</li>
 </ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="java方法的参数传递机制"><a href="#java方法的参数传递机制" class="headerlink" title="java方法的参数传递机制"></a>java方法的参数传递机制</h3><p><strong>值传递</strong>：将实际参数值的副本传入方法内，而参数本身不会受到任何影响</p>
+<h3 id="形参个数可变的方法"><a href="#形参个数可变的方法" class="headerlink" title="形参个数可变的方法"></a>形参个数可变的方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span></span>&#123;</span><br><span class="line">    <span class="comment">//定义了形参个数可变的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, String... books)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(String tmp : books)&#123;</span><br><span class="line">            System.out.println(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也可以采用数组形参来定义方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, String[] books)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>数组形式的形参可以处于形参列表的任意位置，但个数可变的形参只能处于形参列表的最后。也就是说，一个方法最多只能有一个个数可变的形参</strong></p>
+<h3 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h3><ul>
+<li><strong>如果多个方法有相同的名字、不同的参数，便产生了重载</strong></li>
+<li>不能有两个名字相同、参数类型也相同却返回不同类型值的方法</li>
+</ul>
+<h2 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h2><p>成员变量：在类里定义的变量，分为类变量和实例变量。<strong>成员变量无须显示初始化，只要为一个类定义了类变量或实例变量，系统就会在这个类的准备阶段或创建该类的实例时进行默认初始化</strong></p>
+<ul>
+<li>类变量：有static修饰的变量，作用域与这个类的生存范围相同</li>
+<li>实例变量： 没有static修饰的变量，从该类的实例被创建起开始存在，直到系统完全销毁这个实例</li>
+</ul>
+<p>局部变量：形参、方法局部变量、代码块局部变量</p>
+<p><strong>Java允许局部变量和成员变量同名，如果方法里的局部变量和成员变量同名，局部变量就会覆盖成员变量。如果需要在这个方法里引用被覆盖的成员变量，则可使用this或类名作为调用这来限定访问成员变量</strong></p>
 <h2 id="隐式参数与显式参数"><a href="#隐式参数与显式参数" class="headerlink" title="隐式参数与显式参数"></a>隐式参数与显式参数</h2><ul>
 <li>隐式参数：出现在方法名前的对象，在每一个方法中，可用关键字this表示隐式参数</li>
 <li>显式参数：位于方法名后面括号中的数值</li>
 </ul>
 <h2 id="final实例域"><a href="#final实例域" class="headerlink" title="final实例域"></a>final实例域</h2><ul>
-<li><p>将实例域定义为final，构造对象时必须初始化这样的域。</p>
-</li>
-<li><p>一个构造器执行之后，这个域的值被设置，并且在后面的操作中，不能够再对它进行修改。</p>
-</li>
-<li><p>final修饰符大都应用于基本类型域，或不可变类的域（如果类中的每个方法都不会改变其对象，这种类就是不可变类）</p>
-</li>
+<li>将实例域定义为final，构造对象时必须初始化这样的域。</li>
+<li>一个构造器执行之后，这个域的值被设置，并且在后面的操作中，不能够再对它进行修改。</li>
+<li>final修饰符大都应用于基本类型域，或不可变类的域（如果类中的每个方法都不会改变其对象，这种类就是不可变类）</li>
 </ul>
-<h2 id="静态域和静态方法"><a href="#静态域和静态方法" class="headerlink" title="静态域和静态方法"></a>静态域和静态方法</h2><h3 id="静态域"><a href="#静态域" class="headerlink" title="静态域"></a>静态域</h3><p>将域定义为static，每个类中只有一个这样的域。</p>
+<h3 id="final成员变量"><a href="#final成员变量" class="headerlink" title="final成员变量"></a>final成员变量</h3><p>final修饰的成员变量必须由程序员显式地指定初始值。一旦有了初始值，就不能被重新赋值。如果既没有在定义成员变量时指定初始值，也没有再初始化块、构造器中为成员变量指定初始值，那么这些成员变量的值将一直是系统默认分配的值。</p>
+<p>类变量：必须在静态初始化块中指定初始值或声明该类变量时指定初始值，而且只能在两个地方的其中之一指定。</p>
+<p>实例变量：必须在非静态初始化块、声明该实例变量或构造器中指定初始值，而且只能在三个地方的其中之一指定。</p>
+<h3 id="final局部变量"><a href="#final局部变量" class="headerlink" title="final局部变量"></a>final局部变量</h3><p>系统不会对局部变量进行初始化，局部变量必须由程序员显示初始化。</p>
+<p>final修饰局部变量时，既可以在定义时指定默认值，也可以不指定默认值，不能重复赋值。</p>
+<p>使用final修饰的形参，系统根据传入的参数来完成初始化，因此使用final修饰的形参不能被赋值。</p>
+<h3 id="final修饰的引用变量"><a href="#final修饰的引用变量" class="headerlink" title="final修饰的引用变量"></a>final修饰的引用变量</h3><p>final修饰的引用变量，如数组或对象，保证这个引用类型变量所引用的地址不会改变。即一直引用同一个对象，但这个对象完全可以发生改变</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">int</span>[] arr = &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">//对数组进行排序，合法</span></span><br><span class="line">Array.sort(arr);</span><br><span class="line"><span class="comment">//改变数组值，合法</span></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">4</span>;</span><br><span class="line"><span class="comment">//重新引用数组，非法</span></span><br><span class="line">arr = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="final方法"><a href="#final方法" class="headerlink" title="final方法"></a>final方法</h3><p>final修饰的方法不能被重写，如果处于某种原因，不希望子类重写父类的某个方法，则可以使用final修饰该方法。</p>
+<p>如果子类中定义了一个与父类private方法有相同方法名、相同形参列表、相同返回值类型的方法，也不是方法重写，只是重新定义了一个新方法。因此，即使使用final修饰一个private访问权限的方法，依然可以在其子类中定义与该方法具有相同方法名、相同形参列表、相同返回值类型的方法。</p>
+<p>final修饰的方法可以被重载。</p>
+<h3 id="final类"><a href="#final类" class="headerlink" title="final类"></a>final类</h3><p>final修饰的类不可以有子类</p>
+<h2 id="静态域和静态方法"><a href="#静态域和静态方法" class="headerlink" title="静态域和静态方法"></a>静态域和静态方法</h2><p>static修饰的成员表明它属于这个类本身，而不属于该类的单个实例。</p>
+<p>通常把static修饰的成员变量和方法称为类变量、类方法。有时也叫静态变量和静态方法。</p>
+<p>static修饰的成员不能访问没有static修饰的成员。</p>
+<p>static不能修饰构造器。</p>
+<h3 id="静态域"><a href="#静态域" class="headerlink" title="静态域"></a>静态域</h3><p>将域定义为static，每个类中只有一个这样的域。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//每一个对象都有一个自己的id域，但这个类的所有实例将共享一个nextId</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextId = <span class="number">1</span>;</span><br><span class="line">    privete <span class="keyword">int</span> id;</span><br><span class="line"> 	<span class="comment">//......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><ul>
-<li><p>静态方法是一种不能向对象实施操作的方法，静态方法是没有this参数的方法。</p>
-</li>
-<li><p>静态方法可以访问自身类中的静态域，可以通过类名调用这个方法</p>
-</li>
+<li>静态方法是一种不能向对象实施操作的方法，静态方法是没有this参数的方法。</li>
+<li>静态方法可以访问自身类中的静态域，可以通过类名调用这个方法</li>
 </ul>
-<h1 id="对象构造"><a href="#对象构造" class="headerlink" title="对象构造"></a>对象构造</h1><h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><ul>
-<li><p><strong>如果多个方法有相同的名字、不同的参数，便产生了重载</strong></p>
-</li>
-<li><p>不能有两个名字相同、参数类型也相同却返回不同类型值的方法</p>
-</li>
+<h2 id="使用访问控制符"><a href="#使用访问控制符" class="headerlink" title="使用访问控制符"></a>使用访问控制符</h2><ul>
+<li>private：当前类访问权限。如果类的一个成员（包括成员变量、方法和构造器等）使用private访问控制符来修饰，则这个成员只能在当前类的内部被访问</li>
+<li>default：包访问权限。default访问控制的成员或外部类可以被相同包下的其他类访问</li>
+<li>protected：子类访问权限。可以被同一个包中的其他类访问，也可以被不同包中的子类访问</li>
+<li>public：公共访问权限。可以被所有类访问，不管访问类和被访问类是否处于同一个包中</li>
 </ul>
+<p><strong>如果一个Java源文件里定义的所有类都没有使用public修饰，则这个Java源文件的文件名可以是一切合法的文件名。但如果一个Java源文件里定义了一个public修饰的类，则这个源文件的文件名必须与public修饰的类的类名相同</strong></p>
+<h2 id="初始化块"><a href="#初始化块" class="headerlink" title="初始化块"></a>初始化块</h2><h3 id="使用初始化块"><a href="#使用初始化块" class="headerlink" title="使用初始化块"></a>使用初始化块</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] &#123;</span><br><span class="line">	<span class="comment">// 初始化块的可执行代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始化块的修饰符只能是static，使用static修饰的初始化块被称为静态初始化块</p>
+<p>与构造器不同的是，初始化块是一段固定执行的代码，它不能接收任何参数。因此初始化块对同一个类的所有对象进行的初始化处理完全相同。</p>
+<h3 id="静态初始化块"><a href="#静态初始化块" class="headerlink" title="静态初始化块"></a>静态初始化块</h3><p>静态初始化块也被称为类初始化块。</p>
+<p>静态初始化块是类相关的，系统将在类初始化阶段执行静态初始化块，而不是在创建对象时才执行。因此静态初始化块总是比普通初始化块先执行。</p>
+<h3 id="单例类的创建方法"><a href="#单例类的创建方法" class="headerlink" title="单例类的创建方法"></a>单例类的创建方法</h3><p>单例类：一个类始终只能创建一个实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="comment">//使用一个变量来缓存曾经创建的实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">    <span class="comment">//对构造器使用private修饰，隐藏该构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">//提供一个静态方法，用于返回Singleton实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="对象构造"><a href="#对象构造" class="headerlink" title="对象构造"></a>对象构造</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Person(); <span class="comment">// p变量存放在栈中，Person实例存放在堆中，p指向Person实例</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><p>作用</p>
+<ul>
+<li>构造器中引用该构造器正在初始化的对象，this在构造器中代表该构造器正在初始化的对象</li>
+<li>在方法中引用调用该方法的对象</li>
+<li>static修饰的方法中不能使用this引用</li>
+</ul>
+<h3 id="调用另一个构造器"><a href="#调用另一个构造器" class="headerlink" title="调用另一个构造器"></a>调用另一个构造器</h3><p><strong>如果构造器的第一个语句形如this(……)，这个构造器将调用同一个类的另一个构造器</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(<span class="keyword">double</span> s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="string">"Employee #"</span>+nextId,s);</span><br><span class="line">    nextId++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="无参数的构造函数"><a href="#无参数的构造函数" class="headerlink" title="无参数的构造函数"></a>无参数的构造函数</h2><ul>
 <li>对象由无参数构造函数创建时，其状态会设置为适当的默认值</li>
 <li>如果在编写一个类时没有编写构造器，那么系统就会提供一个无参数构造器，这个构造器将所有实例域设置为默认值</li>
@@ -395,9 +463,126 @@
 <h2 id="参数名"><a href="#参数名" class="headerlink" title="参数名"></a>参数名</h2><p><strong>参数变量用同样的名字将实例域屏蔽起来，但可以采用this的形式访问实例域</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String name,<span class="keyword">double</span> salary)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.salary = salary;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="调用另一个构造器"><a href="#调用另一个构造器" class="headerlink" title="调用另一个构造器"></a>调用另一个构造器</h2><p><strong>如果构造器的第一个语句形如this(……)，这个构造器将调用同一个类的另一个构造器</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(<span class="keyword">double</span> s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="string">"Employee #"</span>+nextId,s);</span><br><span class="line">    nextId++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="增强包装类"><a href="#增强包装类" class="headerlink" title="增强包装类"></a>增强包装类</h1><p>Java为8种基本数据类型分别定义了相应的引用类型，并称之为基本数据类型的包装类</p>
+<p>JDK提供自动装箱和自动拆箱功能，简化了基本类型变量和包装类对象之间的转换过程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接把一个基本类型变量赋给Integer对象</span></span><br><span class="line">Integer inObj = <span class="number">5</span>;</span><br><span class="line"><span class="comment">//直接把一个Boolean类型变量赋给Object类型的变量</span></span><br><span class="line">Object boolObj = <span class="keyword">true</span>;</span><br><span class="line"><span class="comment">//直接把一个Integer对象赋给int类型的变量</span></span><br><span class="line"><span class="keyword">int</span> it = inObj;</span><br></pre></td></tr></table></figure>
 
+<p>String类和基本类型之间的转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String intStr = <span class="string">"123"</span>;</span><br><span class="line"><span class="comment">//把一个特定字符串转换成int变量</span></span><br><span class="line"><span class="keyword">int</span> it1 = Integer.parseInt(intStr);</span><br><span class="line"><span class="keyword">int</span> it2 = Integer.valueOf(intStr);</span><br><span class="line"><span class="comment">//把一个float变量转换成String变量</span></span><br><span class="line">String ftStr = String.valueOf(<span class="number">2.345f</span>);</span><br><span class="line">String str = <span class="number">5</span> + <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用包装类提供的方法进行两个基本类型间的比较</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Boolean.compare(<span class="keyword">true</span>,<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>抽象方法和抽象类必须使用abstract修饰符来定义，有抽象方法的类只能被定义成抽象类，抽象类里可以没有抽象方法。</p>
+<p>抽象类和抽象方法的使用规则：</p>
+<ol>
+<li>抽象类和抽象方法必须用abstract修饰，抽象方法不能有方法体</li>
+<li>抽象类不能被实例化，无法使用new关键字来调用抽象类的构造器创建抽象类的实例。即使抽象类里不包含抽象方法，这个抽象类也不能创建实例</li>
+<li>抽象类主要用于被其子类调用</li>
+<li>含有抽象类的方法只能被定义成抽象类</li>
+<li>final修饰的类不能被继承，final修饰的方法也不能被重写。因此final和abstract永远不能同时使用</li>
+<li>static和abstract不能修饰同一个方法，但它们可以同时修饰内部类</li>
+<li>private和abstract不能同时修饰方法</li>
+</ol>
+<h2 id="抽象类例子"><a href="#抽象类例子" class="headerlink" title="抽象类例子"></a>抽象类例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个Shape抽象类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"执行Shape的初始化块..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line">    <span class="comment">//定义一个计算周长的抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">calPerimeter</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//定义一个返回形状的抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getType</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//定义Shape的构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Shape</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Shape</span><span class="params">(String color)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"执行Shape的构造器..."</span>);</span><br><span class="line">        <span class="keyword">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Triangle</span> <span class="keyword">extends</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> a;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> b;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> c;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Triangle</span><span class="params">(String color, <span class="keyword">double</span> a, <span class="keyword">double</span> b, <span class="keyword">double</span> c)</span></span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(color);</span><br><span class="line">        <span class="keyword">this</span>.setSides(a,b,c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSides</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b, <span class="keyword">double</span> c)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(a &gt;= b + c || b &gt;= a+c || c &gt;= a+b)&#123;</span><br><span class="line">            System.out.println(<span class="string">"三角形两边之和大于第三边"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.a = a;</span><br><span class="line">        <span class="keyword">this</span>.b = b;</span><br><span class="line">        <span class="keyword">this</span>.c = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">calPerimeter</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a + b + c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getType</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"三角形"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(Strind[] args)</span></span>&#123;</span><br><span class="line">        Shape s = <span class="keyword">new</span> Triangle(<span class="string">"黑色"</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);  <span class="comment">//体现多态</span></span><br><span class="line">        System.out.println(s.getType());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h2 id="接口的定义"><a href="#接口的定义" class="headerlink" title="接口的定义"></a>接口的定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接口定义的基本语法</span></span><br><span class="line">[修饰符] <span class="class"><span class="keyword">interface</span> 接口名 <span class="keyword">extends</span> 父接口1, 父接口2...</span>&#123;</span><br><span class="line">    零个到多个常量定义;</span><br><span class="line">    零个到多个抽象方法定义;</span><br><span class="line">    零个到多个内部类、接口、枚举定义;</span><br><span class="line">    零个到多个私有方法、默认方法或类方法定义;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在接口中定义成员变量时，不管是否使用public static final修饰符，接口里的成员变量总是使用这三个修饰符来修饰</li>
+<li>定义接口里的普通方法时不管是否使用public abstract修饰符，接口里的普通方法总是使用public abstract来修饰</li>
+<li>接口里的普通方法不能有方法实现，但类方法、默认方法、私有方法都必须有方法实现</li>
+</ol>
+<h2 id="使用接口"><a href="#使用接口" class="headerlink" title="使用接口"></a>使用接口</h2><p>接口主要有如下用途：</p>
+<ul>
+<li>定义变量，也可用于进行强制类型转换</li>
+<li>调用接口中定义的常量</li>
+<li>被其它类实现</li>
+</ul>
+<p>类实现接口的语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1, 接口2...</span>&#123;</span><br><span class="line">    类体部分</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个类实现一个或多个接口之后，这个类必须完全实现这些接口里所定义的全部抽象方法；否则该类将保留从父接口那里继承到的抽象方法，该类也必须定义成抽象类 </p>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><p>定义内部类：把一个类放在另一个类内部定义即可。类内部包括类中任何位置，甚至在方法中也可以定义内部类（方法里定义的内部类被称为局部内部类）。内部类作为其外部类成员，可以直接使用任意访问控制符如private、protected和public等</p>
+<p><em>外部类只有两个作用域：同一个包和任何位置。因此只需要2中访问权限：包访问权限和公开访问权限，正好对应省略访问控制符和public访问控制符</em></p>
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><p>成员内部类：是一种与成员变量、方法、构造器和初始化块相似的类成员</p>
+<h3 id="非静态内部类"><a href="#非静态内部类" class="headerlink" title="非静态内部类"></a>非静态内部类</h3><ul>
+<li>非静态内部类里可以直接访问外部类的private成员</li>
+<li>可以通过this访问非静态内部类的实例变量，通过外部类类名.this来访问外部类的实例变量</li>
+<li>非静态内部类的成员只在非静态内部类范围是可知的，并不能被外部类直接使用。如果外部类需要访问非静态内部类的成员，则必须显示创建非静态内部类对象来调用访问其实例成员</li>
+<li>非静态内部类里不能有静态方法、静态成员变量、静态初始化块</li>
+</ul>
+<h3 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h3><p>如果使用static来修饰一个内部类，则这个内部类就属于外部类本身，而不属于外部类的某个对象。因此使用static修饰的内部类被称为类内部类，也被称为静态内部类</p>
+<p>使用规则：</p>
+<ul>
+<li>静态内部类可以包含静态成员，也可以包含非静态成员</li>
+<li>静态内部类不能访问外部类的实例成员，只能访问外部类的类成员</li>
+<li>即使是静态内部类的实例方法，也不能访问外部类的实例成员，只能访问外部类的静态成员</li>
+<li>静态内部类是外部类的一个静态成员，因此外部类的所有方法、所有初始化块中可以使用静态内部类来定义变量、创建对象</li>
+<li>外部类不能直接访问静态内部类的成员，但可以使用静态内部类的类名作为调用者来访问静态内部类成员</li>
+<li><strong>接口内定义的内部类只能是静态内部类，默认使用public static修饰</strong></li>
+</ul>
+<h3 id="使用内部类"><a href="#使用内部类" class="headerlink" title="使用内部类"></a>使用内部类</h3><ol>
+<li><p>在外部类内部使用内部类</p>
+<ul>
+<li>通过new调用内部类构造器来创建实例</li>
+<li>不要在外部类的静态成员中使用非静态内部类</li>
+</ul>
+</li>
+<li><p>在外部类以外使用非静态内部类</p>
+<p>在创建非静态内部类对象之前，必须先创建其外部类对象。在外部类以外的地方创建非静态内部类实例的语法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OuterInstance.new  InnerConstructor()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Out</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">In</span></span>&#123;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">In</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">            System.out,println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateInnerInstance</span></span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">     	Out.In in - <span class="keyword">new</span> Out().new In(<span class="string">"测试信息"</span>);       </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在外部类以外的地方创建非静态内部类的子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">Out</span>.<span class="title">In</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SubClass</span><span class="params">(Out out)</span></span>&#123;</span><br><span class="line">		out.<span class="keyword">super</span>(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//非静态内部类In类的构造器必须使用外部类对象来调用，代码中super代表调用In类的构造器，而out则代表外部类对象</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在外部类以外使用静态内部类</p>
+<p>在外部类以外的地方创建静态内部类实例的语法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> OuterClass.InnerConstructor()</span><br></pre></td></tr></table></figure>
+
+<p>创建静态内部类的子类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StacticSubClass</span> <span class="keyword">extends</span> <span class="title">StaticOut</span>.<span class="title">StaticIn</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>定义匿名内部类的格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> 实现接口() | 父类构造器(实参列表)&#123;</span><br><span class="line"> 	<span class="comment">//匿名内部类的类体部分  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>匿名内部类不能是抽象类</li>
+<li>匿名内部类不能定义构造器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getPrice</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnoymousTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Product p)</span></span>&#123;</span><br><span class="line">        System.out.println(p.getPrice()+p.getName());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        AnoymousTest ta = <span class="keyword">new</span> AnoymousTest();</span><br><span class="line">        ta.test(<span class="keyword">new</span> Product()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getPrice</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">567.8</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"AGP 显卡"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当通过实现接口来创建匿名内部类时，匿名内部类也不能显式创建构造器，因此匿名内部类只有一个隐式的无参数构造器，故new接口名后的括号里不能传入参数值</p>
+<p>但如果通过继承父类来创建匿名内部类时，匿名内部类将拥有和父类相似的构造器。</p>
+<p>如果局部变量被匿名内部类访问，那么该局部变量相当于自动使用了final修饰</p>
+<h1 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h1><p>函数式接口：只包含一个抽象方法的接口</p>
+<p>Lambda：目标类型必须是“函数式接口”</p>
+<p>Lambda表达式限制：</p>
+<ul>
+<li>Lambda表达式的目标类型必须是明确的函数式接口</li>
+<li>Lambda表达式只能为函数式接口创建对象</li>
+</ul>
+<p>为保证Lambda表达式的目标类型是一个明确的函数式接口，可以有如下三种常见方式：</p>
+<ul>
+<li><p>将Lambda表达式赋值给函数式接口类型的变量</p>
+</li>
+<li><p>将Lambda表达式作为函数式接口类型的参数传给某个方法</p>
+</li>
+<li><p>使用函数式接口对Lambda表达式进行强制类型转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object obj1 = (Runnable)()-&gt;&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt; <span class="number">100</span>; i++)&#123;</span><br><span class="line">		System.out.pritln();</span><br><span class="line">  &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 
       
     </div>
@@ -511,7 +696,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -559,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户自定义类"><span class="nav-number">2.</span> <span class="nav-text">用户自定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器"><span class="nav-number">2.1.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式参数与显式参数"><span class="nav-number">2.2.</span> <span class="nav-text">隐式参数与显式参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final实例域"><span class="nav-number">2.3.</span> <span class="nav-text">final实例域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态域和静态方法"><span class="nav-number">2.4.</span> <span class="nav-text">静态域和静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态域"><span class="nav-number">2.4.1.</span> <span class="nav-text">静态域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态方法"><span class="nav-number">2.4.2.</span> <span class="nav-text">静态方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象构造"><span class="nav-number">3.</span> <span class="nav-text">对象构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重载"><span class="nav-number">3.1.</span> <span class="nav-text">重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无参数的构造函数"><span class="nav-number">3.2.</span> <span class="nav-text">无参数的构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数名"><span class="nav-number">3.3.</span> <span class="nav-text">参数名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用另一个构造器"><span class="nav-number">3.4.</span> <span class="nav-text">调用另一个构造器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户自定义类"><span class="nav-number">2.</span> <span class="nav-text">用户自定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义类"><span class="nav-number">2.1.</span> <span class="nav-text">定义类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器"><span class="nav-number">2.2.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">2.3.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java方法的参数传递机制"><span class="nav-number">2.3.1.</span> <span class="nav-text">java方法的参数传递机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形参个数可变的方法"><span class="nav-number">2.3.2.</span> <span class="nav-text">形参个数可变的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重载"><span class="nav-number">2.3.3.</span> <span class="nav-text">重载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员变量和局部变量"><span class="nav-number">2.4.</span> <span class="nav-text">成员变量和局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式参数与显式参数"><span class="nav-number">2.5.</span> <span class="nav-text">隐式参数与显式参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final实例域"><span class="nav-number">2.6.</span> <span class="nav-text">final实例域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#final成员变量"><span class="nav-number">2.6.1.</span> <span class="nav-text">final成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final局部变量"><span class="nav-number">2.6.2.</span> <span class="nav-text">final局部变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final修饰的引用变量"><span class="nav-number">2.6.3.</span> <span class="nav-text">final修饰的引用变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final方法"><span class="nav-number">2.6.4.</span> <span class="nav-text">final方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final类"><span class="nav-number">2.6.5.</span> <span class="nav-text">final类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态域和静态方法"><span class="nav-number">2.7.</span> <span class="nav-text">静态域和静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态域"><span class="nav-number">2.7.1.</span> <span class="nav-text">静态域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态方法"><span class="nav-number">2.7.2.</span> <span class="nav-text">静态方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用访问控制符"><span class="nav-number">2.8.</span> <span class="nav-text">使用访问控制符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化块"><span class="nav-number">2.9.</span> <span class="nav-text">初始化块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用初始化块"><span class="nav-number">2.9.1.</span> <span class="nav-text">使用初始化块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态初始化块"><span class="nav-number">2.9.2.</span> <span class="nav-text">静态初始化块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例类的创建方法"><span class="nav-number">2.9.3.</span> <span class="nav-text">单例类的创建方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象构造"><span class="nav-number">3.</span> <span class="nav-text">对象构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#this关键字"><span class="nav-number">3.1.</span> <span class="nav-text">this关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用另一个构造器"><span class="nav-number">3.1.1.</span> <span class="nav-text">调用另一个构造器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无参数的构造函数"><span class="nav-number">3.2.</span> <span class="nav-text">无参数的构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数名"><span class="nav-number">3.3.</span> <span class="nav-text">参数名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增强包装类"><span class="nav-number">4.</span> <span class="nav-text">增强包装类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽象类"><span class="nav-number">5.</span> <span class="nav-text">抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类例子"><span class="nav-number">5.1.</span> <span class="nav-text">抽象类例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-number">6.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口的定义"><span class="nav-number">6.1.</span> <span class="nav-text">接口的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用接口"><span class="nav-number">6.2.</span> <span class="nav-text">使用接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">7.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#成员内部类"><span class="nav-number">7.1.</span> <span class="nav-text">成员内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非静态内部类"><span class="nav-number">7.1.1.</span> <span class="nav-text">非静态内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态内部类"><span class="nav-number">7.1.2.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用内部类"><span class="nav-number">7.1.3.</span> <span class="nav-text">使用内部类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">7.2.</span> <span class="nav-text">匿名内部类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lambda"><span class="nav-number">8.</span> <span class="nav-text">Lambda</span></a></li></ol></div>
             
 
           </div>
@@ -582,7 +767,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -94,14 +94,14 @@
 
 
 
-<meta name="description" content="类、超类和子类 超类：已存在的类，也被称为基类或父类 子类：新类，也被称为派生类或孩子类  123456class Manager extends Employee&amp;#123;    private double bonus;    public void setBonus(double b)&amp;#123;		bonus = b;    &amp;#125;&amp;#125;  调用超类的方法应使用super关键">
+<meta name="description" content="类、超类和子类 超类：已存在的类，也被称为基类或父类 子类：新类，也被称为派生类或孩子类  123456class Manager extends Employee&amp;#123;    private double bonus;    public void setBonus(double b)&amp;#123;		bonus = b;    &amp;#125;&amp;#125;  Java中每个类都只能有一个直接父">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java继承">
 <meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;11&#x2F;17&#x2F;Java%E7%BB%A7%E6%89%BF&#x2F;index.html">
 <meta property="og:site_name" content="Freya&#39;s blog">
-<meta property="og:description" content="类、超类和子类 超类：已存在的类，也被称为基类或父类 子类：新类，也被称为派生类或孩子类  123456class Manager extends Employee&amp;#123;    private double bonus;    public void setBonus(double b)&amp;#123;		bonus = b;    &amp;#125;&amp;#125;  调用超类的方法应使用super关键">
+<meta property="og:description" content="类、超类和子类 超类：已存在的类，也被称为基类或父类 子类：新类，也被称为派生类或孩子类  123456class Manager extends Employee&amp;#123;    private double bonus;    public void setBonus(double b)&amp;#123;		bonus = b;    &amp;#125;&amp;#125;  Java中每个类都只能有一个直接父">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T07:43:40.487Z">
+<meta property="og:updated_time" content="2020-02-01T06:41:46.634Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -355,11 +355,34 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Manager</span> <span class="keyword">extends</span> <span class="title">Employee</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> bonus;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBonus</span><span class="params">(<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">		bonus = b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>Java中每个类都只能有一个直接父类，可以有无限多个间接父类</p>
 <p><strong>调用超类的方法应使用super关键词</strong></p>
 <p><strong>在子类中可以增加域、增加方法或覆盖超类的方法，然而绝对不能删除继承的任何域和方法</strong></p>
 <p><strong>通过super实现对超类构造器的调用，使用super调用构造器的语句必须是子类构造器的第一条语句。如果子类的构造器没有显示地调用超类的构造器，则将自动地调用超类默认（没有参数）的构造器。如果超类没有不带参数的勾走爱情，并且在子类的构造器中又没有显示地调用超类的其他构造器，则Java编译器将报告错误</strong></p>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>一个超类对象既可以引用一个超类对象，也可以引用超类的任何一个子类的对象</p>
+<h2 id="方法覆盖"><a href="#方法覆盖" class="headerlink" title="方法覆盖"></a>方法覆盖</h2><p>子类包含与父类同名方法的现象被称为方法重写，或方法覆盖。</p>
+<p>方法的重写遵循：</p>
+<ol>
+<li>方法名相同，形参列表相同</li>
+<li>子类方法返回值类型应比父类方法返回值类型更小或相同</li>
+<li>子类方法声明抛出的异常类应比父类方法声明抛出的异常类型更小或相等</li>
+<li>子类方法的访问权限应比父类方法的访问权限更大或相等</li>
+<li>覆盖方法和被覆盖方法要么都是类办法，要么都是实例方法。</li>
+<li>如果父类方法具有private访问权限，则该方法对其子类是隐藏的，因此其子类无法访问该方法，也就是无法重写方法</li>
+</ol>
+<h3 id="super限定"><a href="#super限定" class="headerlink" title="super限定"></a>super限定</h3><ol>
+<li>如果需要在子类方法中调用父类中被覆盖的方法，则可以使用super或者父类类名作为调用者来调用父类中覆盖的方法。</li>
+<li>super不能出现在static修饰的方法中</li>
+<li>如果在构造器中使用super，则super用于限定该构造器初始化的是该对象从父类继承得到的实例变量，而不是该类自己定义的实例变量</li>
+<li>在一个构造器中调用另一个重载的构造器使用this调用来完成，在子类构造器中调用父类构造器使用super调用来完成。<strong>使用super调用父类构造器也必须出现在子类构造器执行体的第一行</strong></li>
+</ol>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>一个超类对象既可以引用一个超类对象，也可以引用超类的任何一个子类的对象。</p>
+<p>因为子类其实是一种特殊的父类，因此Java允许把一个子类对象直接赋给一个父类引用变量，无须任何类型转换。</p>
 <p><strong>不能将一个超类的引用赋给子类变量</strong></p>
+<p>引用变量在编译阶段只能调用其编译时类型所具有的方法，但运行时执行它运行时类型所具有的方法。<strong>因此，在编译Java代码时，引用变量只能调用声明该变量时所用类里包含的方法。</strong>例如，通过Object p = new Person()代码定义的一个变量p，则这个p只能调用Object类的方法，而不能调用Person类定义的方法。</p>
+<p>通过引用变量来访问其包含的实例变量时，系统总是试图访问它编译时类型所定义的成员变量，而不是它运行时类型所定义的成员变量。</p>
+<h3 id="引用变量的强制类型转换"><a href="#引用变量的强制类型转换" class="headerlink" title="引用变量的强制类型转换"></a>引用变量的强制类型转换</h3><p>编写Java程序时，引用变量只能调用它编译时类型的方法，而不能调用它运行时类型的方法，即使它实际所引用的对象确实包含该方法。如果需要让这个引用变量调用它运行时类型的方法，则必须把它强制类型转换成运行时类型。</p>
+<p>引用类型之间的转换只能在就具有继承关系的两个类型之间进行，如果是两个没有任何继承关系的类型，则无法进行类型转换，否则编译时就会出现错误。</p>
+<p>instanceof运算符：在进行强制类型转换之前，先判断一个对象是否是后一个类的实例，是否可以成功转换。instanceof运算符前面操作数的编译时类型要么与后面的类型相同，要么与后面的类具有父子继承关系，否则会引起编译错误。</p>
 <h3 id="动态绑定和静态绑定"><a href="#动态绑定和静态绑定" class="headerlink" title="动态绑定和静态绑定"></a>动态绑定和静态绑定</h3><ul>
 <li>静态绑定：如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确知道应该调用哪个方法，称为静态绑定</li>
 <li>动态绑定：调用的方法依赖于隐式参数的实际类型，称为动态绑定。</li>
@@ -385,7 +408,7 @@
 
 <h2 id="访问数组列表元素"><a href="#访问数组列表元素" class="headerlink" title="访问数组列表元素"></a>访问数组列表元素</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置第i个元素，set只能替换数组中已经存在的元素内容</span></span><br><span class="line">staff.set(i,harry);</span><br><span class="line"><span class="comment">//获得数组列表的元素</span></span><br><span class="line">Employee e = staff.get(i);</span><br></pre></td></tr></table></figure>
 
-<h2 id="数组列表基本操作"><a href="#数组列表基本操作" class="headerlink" title="数组列表基本操作"></a>数组列表基本操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;X&gt; = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="keyword">while</span>(...)&#123;</span><br><span class="line">    x = ...;</span><br><span class="line">    list.add(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用toArray()将数组元素拷贝到一个数组中</span></span><br><span class="line">X[] a = <span class="keyword">new</span> X[list.size()];</span><br><span class="line">list.toArray(a);</span><br><span class="line"><span class="comment">//在列表中间插入元素</span></span><br><span class="line"><span class="keyword">int</span> n = staff.size()/<span class="number">2</span>;</span><br><span class="line">staff.add(n,e);</span><br><span class="line"><span class="comment">//在列表中删除一个元素</span></span><br><span class="line">Employee e = staff.remove(n);</span><br><span class="line"><span class="comment">//循环遍历数组列表</span></span><br><span class="line"><span class="keyword">for</span>(Employee e:staff)</span><br><span class="line">   <span class="keyword">do</span> something with e;</span><br></pre></td></tr></table></figure>
+<h2 id="数组列表基本操作"><a href="#数组列表基本操作" class="headerlink" title="数组列表基本操作"></a>数组列表基本操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;X&gt; = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">while</span>(...)&#123;</span><br><span class="line">    x = ...;</span><br><span class="line">    list.add(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用toArray()将数组元素拷贝到一个数组中</span></span><br><span class="line">X[] a = <span class="keyword">new</span> X[list.size()];</span><br><span class="line">list.toArray(a);</span><br><span class="line"><span class="comment">//在列表中间插入元素</span></span><br><span class="line"><span class="keyword">int</span> n = staff.size()/<span class="number">2</span>;</span><br><span class="line">staff.add(n,e);</span><br><span class="line"><span class="comment">//在列表中删除一个元素</span></span><br><span class="line">Employee e = staff.remove(n);</span><br><span class="line"><span class="comment">//循环遍历数组列表</span></span><br><span class="line"><span class="keyword">for</span>(Employee e:staff)</span><br><span class="line">   <span class="keyword">do</span> something with e;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -500,7 +523,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -548,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类、超类和子类"><span class="nav-number">1.</span> <span class="nav-text">类、超类和子类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">1.1.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态绑定和静态绑定"><span class="nav-number">1.1.1.</span> <span class="nav-text">动态绑定和静态绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final类和方法"><span class="nav-number">1.2.</span> <span class="nav-text">final类和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">1.3.</span> <span class="nav-text">抽象类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object"><span class="nav-number">2.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equals方法"><span class="nav-number">2.1.</span> <span class="nav-text">equals方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#泛型数组列表"><span class="nav-number">3.</span> <span class="nav-text">泛型数组列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问数组列表元素"><span class="nav-number">3.1.</span> <span class="nav-text">访问数组列表元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组列表基本操作"><span class="nav-number">3.2.</span> <span class="nav-text">数组列表基本操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类、超类和子类"><span class="nav-number">1.</span> <span class="nav-text">类、超类和子类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法覆盖"><span class="nav-number">1.1.</span> <span class="nav-text">方法覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#super限定"><span class="nav-number">1.1.1.</span> <span class="nav-text">super限定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">1.2.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用变量的强制类型转换"><span class="nav-number">1.2.1.</span> <span class="nav-text">引用变量的强制类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态绑定和静态绑定"><span class="nav-number">1.2.2.</span> <span class="nav-text">动态绑定和静态绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final类和方法"><span class="nav-number">1.3.</span> <span class="nav-text">final类和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">1.4.</span> <span class="nav-text">抽象类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object"><span class="nav-number">2.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equals方法"><span class="nav-number">2.1.</span> <span class="nav-text">equals方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#泛型数组列表"><span class="nav-number">3.</span> <span class="nav-text">泛型数组列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问数组列表元素"><span class="nav-number">3.1.</span> <span class="nav-text">访问数组列表元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组列表基本操作"><span class="nav-number">3.2.</span> <span class="nav-text">数组列表基本操作</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -571,7 +594,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

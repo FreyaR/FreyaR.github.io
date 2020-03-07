@@ -94,12 +94,14 @@
 
 
 
+<meta name="description" content="接口 接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义 接口中所有方法自动属于public，在接口中声明方法时，不必提供关键字public。但是在实现接口时，必须把方法声明为public 接口绝不能含有实例域，也不能在接口中实现方法。提供实例域和方法实现的任务应该由接口的那个类来完成  特性 可以声明接口的变量，接口变量必须引用实现了接口的类对象  可以使用instanc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="接口和内部类">
 <meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;11&#x2F;18&#x2F;%E6%8E%A5%E5%8F%A3%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB&#x2F;index.html">
 <meta property="og:site_name" content="Freya&#39;s blog">
+<meta property="og:description" content="接口 接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义 接口中所有方法自动属于public，在接口中声明方法时，不必提供关键字public。但是在实现接口时，必须把方法声明为public 接口绝不能含有实例域，也不能在接口中实现方法。提供实例域和方法实现的任务应该由接口的那个类来完成  特性 可以声明接口的变量，接口变量必须引用实现了接口的类对象  可以使用instanc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T07:44:43.990Z">
+<meta property="og:updated_time" content="2019-11-22T08:53:26.369Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -298,6 +300,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -325,7 +349,32 @@
       
 
       
-        
+        <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><ul>
+<li>接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义</li>
+<li>接口中所有方法自动属于public，在接口中声明方法时，不必提供关键字public。但是在实现接口时，必须把方法声明为public</li>
+<li>接口绝不能含有实例域，也不能在接口中实现方法。提供实例域和方法实现的任务应该由接口的那个类来完成</li>
+</ul>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li><p>可以声明接口的变量，接口变量必须引用实现了接口的类对象</p>
+</li>
+<li><p>可以使用instanceof检查一个对象是否实现了某个特定的接口：if(anObject instanceof Comparable){……}</p>
+</li>
+<li><p>接口的扩展</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Moveable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Powered</span> <span class="keyword">extends</span> <span class="title">Moveable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">milesPerGallon</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">double</span> SPEED_LIMIT = <span class="number">95</span>; <span class="comment">//接口中的域被自动的设为public static final</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h1 id="对象克隆"><a href="#对象克隆" class="headerlink" title="对象克隆"></a>对象克隆</h1><p>创建一个对象的新的copy，它的最初状态与original一样，但以后将可以各自改变各自的状态，那就需要使用clone方法</p>
+<ul>
+<li><p>clone方法是Object类的一个protected方法</p>
+</li>
+<li><p>clone默认的克隆操作是浅拷贝。如果对象中的所有数据域都属于数值或基本类型，这样的拷贝域没有任何问题。但是，如果在对象中包含了子对象的引用，拷贝的结果会使得两个域引用同一个子对象，原始对象与克隆对象共享这部分信息</p>
+</li>
+<li><p>如果一个对象需要克隆，而没有实现Cloneable接口，就会产生一个已检验异常</p>
+</li>
+</ul>
+
       
     </div>
     
@@ -358,6 +407,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/29/%E6%B3%9B%E5%9E%8B%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="prev" title="泛型程序设计">
+                泛型程序设计 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -409,8 +462,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/timg.jpg"
@@ -425,7 +487,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -464,6 +526,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-number">1.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">1.1.</span> <span class="nav-text">特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象克隆"><span class="nav-number">2.</span> <span class="nav-text">对象克隆</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -480,7 +558,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

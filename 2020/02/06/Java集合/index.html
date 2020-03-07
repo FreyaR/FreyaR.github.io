@@ -94,14 +94,14 @@
 
 
 
-<meta name="description" content="二叉树的深度优先遍历从根节点出发，沿着左子树方向进行纵向遍历，直到找到叶子节点为止。然后回溯到前一个节点，进行右子树遍历，直到遍历完所有可达节点为止 实现引入栈，后进先出。可以先将右子树压栈，再将左子树压栈。在压栈时，必须确保该节点的左右子树都为空。如果不为空就需要先将它的右子树压栈，再将左子树压栈。等左右子树都压栈以后，再将节点压栈。">
+<meta name="description" content="Java集合概述Java的集合类主要由两个接口派生而出：Collection和Map Collection接口派生：Set(无序集合，元素不可重复)，Queue(队列)，List(有序集合，元素可以重复) Map接口实现：EnumMap,HashMap,Hashtable,SortedMap,WeakHashMap Java集合遍历使用lambda表达式遍历集合123Collection book">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树的遍历">
-<meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;10&#x2F;30&#x2F;%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86&#x2F;index.html">
+<meta property="og:title" content="Java集合">
+<meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2020&#x2F;02&#x2F;06&#x2F;Java%E9%9B%86%E5%90%88&#x2F;index.html">
 <meta property="og:site_name" content="Freya&#39;s blog">
-<meta property="og:description" content="二叉树的深度优先遍历从根节点出发，沿着左子树方向进行纵向遍历，直到找到叶子节点为止。然后回溯到前一个节点，进行右子树遍历，直到遍历完所有可达节点为止 实现引入栈，后进先出。可以先将右子树压栈，再将左子树压栈。在压栈时，必须确保该节点的左右子树都为空。如果不为空就需要先将它的右子树压栈，再将左子树压栈。等左右子树都压栈以后，再将节点压栈。">
+<meta property="og:description" content="Java集合概述Java的集合类主要由两个接口派生而出：Collection和Map Collection接口派生：Set(无序集合，元素不可重复)，Queue(队列)，List(有序集合，元素可以重复) Map接口实现：EnumMap,HashMap,Hashtable,SortedMap,WeakHashMap Java集合遍历使用lambda表达式遍历集合123Collection book">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T02:55:46.937Z">
+<meta property="og:updated_time" content="2020-02-13T13:39:00.411Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://freyar.github.io/2019/10/30/树的遍历/"/>
+  <link rel="canonical" href="https://freyar.github.io/2020/02/06/Java集合/"/>
 
 
 
 
 
-  <title>树的遍历 | Freya's blog</title>
+  <title>Java集合 | Freya's blog</title>
   
 
 
@@ -260,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freyar.github.io/2019/10/30/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/">
+    <link itemprop="mainEntityOfPage" href="https://freyar.github.io/2020/02/06/Java%E9%9B%86%E5%90%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Freya Rao">
@@ -277,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">树的遍历</h1>
+          <h1 class="post-title" itemprop="name headline">Java集合</h1>
         
 
         <div class="post-meta">
@@ -289,8 +289,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-30T10:00:06+08:00">
-                2019-10-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T15:51:04+08:00">
+                2020-02-06
               </time>
             
 
@@ -312,8 +312,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/coding/" itemprop="url" rel="index">
-                    <span itemprop="name">coding</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -349,9 +349,25 @@
       
 
       
-        <h1 id="二叉树的深度优先遍历"><a href="#二叉树的深度优先遍历" class="headerlink" title="二叉树的深度优先遍历"></a>二叉树的深度优先遍历</h1><p><strong>从根节点出发，沿着左子树方向进行纵向遍历，直到找到叶子节点为止。然后回溯到前一个节点，进行右子树遍历，直到遍历完所有可达节点为止</strong></p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>引入栈，后进先出。可以先将右子树压栈，再将左子树压栈。在压栈时，必须确保该节点的左右子树都为空。如果不为空就需要先将它的右子树压栈，再将左子树压栈。等左右子树都压栈以后，再将节点压栈。</p>
+        <h1 id="Java集合概述"><a href="#Java集合概述" class="headerlink" title="Java集合概述"></a>Java集合概述</h1><p>Java的集合类主要由两个接口派生而出：Collection和Map</p>
+<p>Collection接口派生：Set(无序集合，元素不可重复)，Queue(队列)，List(有序集合，元素可以重复)</p>
+<p>Map接口实现：EnumMap,HashMap,Hashtable,SortedMap,WeakHashMap</p>
+<h1 id="Java集合遍历"><a href="#Java集合遍历" class="headerlink" title="Java集合遍历"></a>Java集合遍历</h1><h2 id="使用lambda表达式遍历集合"><a href="#使用lambda表达式遍历集合" class="headerlink" title="使用lambda表达式遍历集合"></a>使用lambda表达式遍历集合</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collection books = <span class="keyword">new</span> HashSet();</span><br><span class="line">...</span><br><span class="line">books.forEach(obj-&gt;System.out.println(<span class="string">"迭代集合元素"</span>+obj))</span><br></pre></td></tr></table></figure>
 
+<h2 id="使用Java-8增强的Iterator遍历集合元素"><a href="#使用Java-8增强的Iterator遍历集合元素" class="headerlink" title="使用Java 8增强的Iterator遍历集合元素"></a>使用Java 8增强的Iterator遍历集合元素</h2><p>Iterator接口里定义了如下4个方法：</p>
+<p>boolean hasNext():如果被迭代的集合元素还没有被遍历完，则返回true</p>
+<p>Object next():返回集合里的下一个元素</p>
+<p>void remove():删除集合里上一次next方法返回的元素</p>
+<p>void forEachRemaining(Consumer action):该方法可以使用Lambda表达式来遍历集合元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IteratorTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Iterator it = books.iterator;</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">            String book = (String)it.next; <span class="comment">//it.next()方法返回的数据类型是Object类型，因此需要强制类型转换</span></span><br><span class="line">            it.remove(); <span class="comment">//从集合中删除上一次next()方法返回的元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>当使用Iterator迭代访问Collection集合元素时，Collection集合里的元素不能被改变，只有通过Iterator的remove()方法删除上一次next()方法返回的集合元素才可以</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IteratorTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Iterator it = books.Iterator();</span><br><span class="line">        it.forEachRemaining(obj-&gt;System.out.println(<span class="string">"迭代集合元素"</span>+obj));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用foreach循环遍历集合元素"><a href="#使用foreach循环遍历集合元素" class="headerlink" title="使用foreach循环遍历集合元素"></a>使用foreach循环遍历集合元素</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ForeachTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> class <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">        foreach(Object obj:books)&#123;</span><br><span class="line">            String book = (String)obj;</span><br><span class="line">            System.out.println(book);</span><br><span class="line">            <span class="comment">//以下代码会引发异常</span></span><br><span class="line">            books.remove(book);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>当使用foreach循环遍历迭代访问集合元素时，该集合也不能发生改变</strong></p>
+<h1 id="List集合"><a href="#List集合" class="headerlink" title="List集合"></a>List集合</h1>
       
     </div>
     
@@ -375,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/25/%E6%8C%87%E9%92%88/" rel="next" title="指针">
-                <i class="fa fa-chevron-left"></i> 指针
+              <a href="/2019/11/29/%E6%B3%9B%E5%9E%8B%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="next" title="泛型程序设计">
+                <i class="fa fa-chevron-left"></i> 泛型程序设计
               </a>
             
           </div>
@@ -385,8 +401,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/04/leetcode/" rel="prev" title="leetcode">
-                leetcode <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/27/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="prev" title="Java多线程">
+                Java多线程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -512,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树的深度优先遍历"><span class="nav-number">1.</span> <span class="nav-text">二叉树的深度优先遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">1.1.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java集合概述"><span class="nav-number">1.</span> <span class="nav-text">Java集合概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java集合遍历"><span class="nav-number">2.</span> <span class="nav-text">Java集合遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用lambda表达式遍历集合"><span class="nav-number">2.1.</span> <span class="nav-text">使用lambda表达式遍历集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Java-8增强的Iterator遍历集合元素"><span class="nav-number">2.2.</span> <span class="nav-text">使用Java 8增强的Iterator遍历集合元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用foreach循环遍历集合元素"><span class="nav-number">2.3.</span> <span class="nav-text">使用foreach循环遍历集合元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List集合"><span class="nav-number">3.</span> <span class="nav-text">List集合</span></a></li></ol></div>
             
 
           </div>
