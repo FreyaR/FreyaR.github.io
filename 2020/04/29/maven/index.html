@@ -94,14 +94,14 @@
 
 
 
-<meta name="description" content="接口 接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义 接口中所有方法自动属于public，在接口中声明方法时，不必提供关键字public。但是在实现接口时，必须把方法声明为public 接口绝不能含有实例域，也不能在接口中实现方法。提供实例域和方法实现的任务应该由接口的那个类来完成  特性 可以声明接口的变量，接口变量必须引用实现了接口的类对象  可以使用instanc">
+<meta name="description" content="mavenmaven pompom：maven工程的基本单元，包含项目的基本信息，用于描述项目如何构建，声明项目依赖，等等。 pom中可以指定以下配置：  项目依赖 插件 执行目标 项目构建profile 项目版本 项目开发者列表 相关邮件列表信息  所有的pom文件都需要project元素和三个必需字段：groupId，artifactId，version 1234567891011121314">
 <meta property="og:type" content="article">
-<meta property="og:title" content="接口和内部类">
-<meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2019&#x2F;11&#x2F;18&#x2F;%E6%8E%A5%E5%8F%A3%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB&#x2F;index.html">
+<meta property="og:title" content="maven">
+<meta property="og:url" content="https:&#x2F;&#x2F;freyar.github.io&#x2F;2020&#x2F;04&#x2F;29&#x2F;maven&#x2F;index.html">
 <meta property="og:site_name" content="Freya&#39;s blog">
-<meta property="og:description" content="接口 接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义 接口中所有方法自动属于public，在接口中声明方法时，不必提供关键字public。但是在实现接口时，必须把方法声明为public 接口绝不能含有实例域，也不能在接口中实现方法。提供实例域和方法实现的任务应该由接口的那个类来完成  特性 可以声明接口的变量，接口变量必须引用实现了接口的类对象  可以使用instanc">
+<meta property="og:description" content="mavenmaven pompom：maven工程的基本单元，包含项目的基本信息，用于描述项目如何构建，声明项目依赖，等等。 pom中可以指定以下配置：  项目依赖 插件 执行目标 项目构建profile 项目版本 项目开发者列表 相关邮件列表信息  所有的pom文件都需要project元素和三个必需字段：groupId，artifactId，version 1234567891011121314">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-22T08:53:26.369Z">
+<meta property="og:updated_time" content="2020-04-29T15:26:00.716Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://freyar.github.io/2019/11/18/接口和内部类/"/>
+  <link rel="canonical" href="https://freyar.github.io/2020/04/29/maven/"/>
 
 
 
 
 
-  <title>接口和内部类 | Freya's blog</title>
+  <title>maven | Freya's blog</title>
   
 
 
@@ -260,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freyar.github.io/2019/11/18/%E6%8E%A5%E5%8F%A3%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="https://freyar.github.io/2020/04/29/maven/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Freya Rao">
@@ -277,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">接口和内部类</h1>
+          <h1 class="post-title" itemprop="name headline">maven</h1>
         
 
         <div class="post-meta">
@@ -289,8 +289,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-18T15:44:43+08:00">
-                2019-11-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-29T23:26:00+08:00">
+                2020-04-29
               </time>
             
 
@@ -299,28 +299,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -349,32 +327,27 @@
       
 
       
-        <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><ul>
-<li>接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义</li>
-<li>接口中所有方法自动属于public，在接口中声明方法时，不必提供关键字public。但是在实现接口时，必须把方法声明为public</li>
-<li>接口绝不能含有实例域，也不能在接口中实现方法。提供实例域和方法实现的任务应该由接口的那个类来完成</li>
-</ul>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
-<li><p>可以声明接口的变量，接口变量必须引用实现了接口的类对象</p>
-</li>
-<li><p>可以使用instanceof检查一个对象是否实现了某个特定的接口：if(anObject instanceof Comparable){……}</p>
-</li>
-<li><p>接口的扩展</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Moveable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Powered</span> <span class="keyword">extends</span> <span class="title">Moveable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">milesPerGallon</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">double</span> SPEED_LIMIT = <span class="number">95</span>; <span class="comment">//接口中的域被自动的设为public static final</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h1 id="对象克隆"><a href="#对象克隆" class="headerlink" title="对象克隆"></a>对象克隆</h1><p>创建一个对象的新的copy，它的最初状态与original一样，但以后将可以各自改变各自的状态，那就需要使用clone方法</p>
+        <h1 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h1><h2 id="maven-pom"><a href="#maven-pom" class="headerlink" title="maven pom"></a>maven pom</h2><p>pom：maven工程的基本单元，包含项目的基本信息，用于描述项目如何构建，声明项目依赖，等等。</p>
+<p>pom中可以指定以下配置：</p>
 <ul>
-<li><p>clone方法是Object类的一个protected方法</p>
-</li>
-<li><p>clone默认的克隆操作是浅拷贝。如果对象中的所有数据域都属于数值或基本类型，这样的拷贝域没有任何问题。但是，如果在对象中包含了子对象的引用，拷贝的结果会使得两个域引用同一个子对象，原始对象与克隆对象共享这部分信息</p>
-</li>
-<li><p>如果一个对象需要克隆，而没有实现Cloneable接口，就会产生一个已检验异常</p>
-</li>
+<li>项目依赖</li>
+<li>插件</li>
+<li>执行目标</li>
+<li>项目构建profile</li>
+<li>项目版本</li>
+<li>项目开发者列表</li>
+<li>相关邮件列表信息</li>
 </ul>
+<p>所有的pom文件都需要project元素和三个必需字段：groupId，artifactId，version</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span> = <span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span> = <span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span> = <span class="string">"http://maven.apache.org/POM/4.0.0</span></span></span><br><span class="line"><span class="tag"><span class="string">    http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">&lt;!-- 模型版本 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， 如com.companyname.project-group，maven会将该项目打成的jar包放本地路径：/com/companyname/project-group --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.companyname.project-group<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">&lt;!-- 项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>project<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">&lt;!-- 版本号 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="maven-仓库"><a href="#maven-仓库" class="headerlink" title="maven 仓库"></a>maven 仓库</h2><p>maven仓库有三种类型：本地、中央、远程</p>
+<h3 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h3><p>运行 Maven 的时候，Maven 所需要的任何构件都是直接从本地仓库获取的。如果本地仓库没有，它会首先尝试从远程仓库下载构件至本地仓库，然后再使用本地仓库的构件。</p>
+<p>默认情况下，不管Linux还是 Windows，每个用户在自己的用户目录下都有一个路径名为.m2/respository/ 的仓库目录。</p>
+<p>Maven 本地仓库默认被创建在 %USER_HOME% 目录下。要修改默认位置，在%M2_HOME%\conf 目录中的 Maven 的 settings.xml 文件中定义另一个路径。</p>
+<h3 id="中央仓库"><a href="#中央仓库" class="headerlink" title="中央仓库"></a>中央仓库</h3><p>Maven 中央仓库是由 Maven 社区提供的仓库，其中包含了大量常用的库。</p>
+<p>中央仓库包含了绝大多数流行的开源Java构件，以及源码、作者信息、SCM、信息、许可证信息等。一般来说，简单的Java项目依赖的构件都可以在这里下载到。中央仓库不需要配置，这个仓库由maven社区管理，需要通过网络才能访问</p>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3>
       
     </div>
     
@@ -398,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/17/Java%E7%BB%A7%E6%89%BF/" rel="next" title="Java继承">
-                <i class="fa fa-chevron-left"></i> Java继承
+              <a href="/2020/02/27/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="next" title="Java多线程">
+                <i class="fa fa-chevron-left"></i> Java多线程
               </a>
             
           </div>
@@ -408,8 +381,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/29/%E6%B3%9B%E5%9E%8B%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="prev" title="泛型程序设计">
-                泛型程序设计 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/05/11/SpringBoot/" rel="prev" title="SpringBoot">
+                SpringBoot <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -535,7 +508,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-number">1.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">1.1.</span> <span class="nav-text">特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象克隆"><span class="nav-number">2.</span> <span class="nav-text">对象克隆</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven"><span class="nav-number">1.</span> <span class="nav-text">maven</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-pom"><span class="nav-number">1.1.</span> <span class="nav-text">maven pom</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-仓库"><span class="nav-number">1.2.</span> <span class="nav-text">maven 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地仓库"><span class="nav-number">1.2.1.</span> <span class="nav-text">本地仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中央仓库"><span class="nav-number">1.2.2.</span> <span class="nav-text">中央仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库"><span class="nav-number">1.2.3.</span> <span class="nav-text">远程仓库</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
